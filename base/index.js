@@ -1,19 +1,22 @@
-/**
- * @format
- * @lint-ignore-every XPLATJSCOPYRIGHT1
- */
+import App from "./App.js";
 
-import { Navigation } from "react-native-navigation";
-import App from "./App";
-
-Navigation.registerComponent(`navigation.playground.WelcomeScreen`, () => App);
-
-Navigation.events().registerAppLaunchedListener(() => {
-  Navigation.setRoot({
-    root: {
-      component: {
-        name: "navigation.playground.WelcomeScreen"
-      }
-    }
-  });
+App().events().registerAppLaunchedListener(() => {
+  App().setRoot({
+        root: {
+            stack: {
+                children: [{
+                    component: {
+                        name: 'App.Home',
+                        options: {
+                            topBar: {
+                                title: {
+                                    text: 'Home'
+                                }
+                            }
+                        }
+                    }
+                }]
+            }
+        }
+    });
 });
